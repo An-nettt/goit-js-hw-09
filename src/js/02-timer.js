@@ -13,11 +13,11 @@ const refs = {
 
 let today = new Date();
 let selectedDate;
+let timerId = null;
 
 refs.startBtn.addEventListener('click', onStartBtnClick);
 
 refs.startBtn.disabled = true;
-refs.days = 45;
 
 const fp = flatpickr(
   refs.myInput,
@@ -26,10 +26,8 @@ const fp = flatpickr(
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    // isActive = false;
     onClose(selectedDates) {
-      if (selectedDates[0] < today) {
-        console.log('не то');
+      if (selectedDates[0] <= today) {
         refs.startBtn.disabled = true;
         // Notiflix.Notify.failure('Please choose a date in the future');
         window.alert('Please choose a date in the future');
@@ -42,15 +40,17 @@ const fp = flatpickr(
 );
 
 function onStartBtnClick(event) {
-  setInterval(() => {
-    let deltaTime = selectedDate.getTime() - Date.now();
-    // console.log(deltaTime);
-    let delta = convertMs(deltaTime);
-    console.log(delta);
-    refs.days = delta.days;
-    refs.hours = delta.hours;
-    refs.minutes = delta.minutes;
-    refs.seconds = delta.seconds;
+  timerId = setInterval(() => {
+    const deltaTime = selectedDate.getTime() - Date.now();
+    if (deltaTime <= 0) {
+      clearInterval(timerId);
+      return;
+    }
+    const timer = convertMs(deltaTime);
+    refs.days.textContent = timer.days;
+    refs.hours.textContent = timer.hours;
+    refs.minutes.textContent = timer.minutes;
+    refs.seconds.textContent = timer.seconds;
   }, 1000);
 }
 
@@ -78,7 +78,3 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-
-// console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-// console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-// console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
