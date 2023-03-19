@@ -16,3 +16,52 @@ img {
   display: block;
   max-width: 100%;
 }
+
+#datetime-picker {
+  justify-content: center;
+  text-align: center;
+  font-weight: 400;
+}
+
+.data-start {
+  font-size: 20px;
+  background: #6495ed;
+  padding: 2px 30px;
+  color: #000;
+  border: none;
+}
+
+.timer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.field {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 60px;
+  text-align: center;
+}
+
+.label {
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 12px;
+  color: #caa78c;
+}
