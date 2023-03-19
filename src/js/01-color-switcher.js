@@ -18,13 +18,11 @@ function onStartBtnClick(event) {
   disabled = false;
 
   timerId = setInterval(() => {
-    console.log('натиснули старт');
     refs.bodyStyle.style.backgroundColor = getRandomHexColor();
   }, 1000);
 }
 
 function onStopBtnClick(event) {
-  console.log('стоп');
   clearInterval(timerId);
   disabled = true;
 }
