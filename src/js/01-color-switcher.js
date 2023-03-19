@@ -1,17 +1,33 @@
 const refs = {
   startBtn: document.querySelector('button[data-start]'),
   stopBtn: document.querySelector('button[data-stop]'),
+  bodyStyle: document.querySelector('body'),
 };
 
 refs.startBtn.addEventListener('click', onStartBtnClick);
 refs.stopBtn.addEventListener('click', onStopBtnClick);
 
+let timerId = null;
+let disabled = true;
+
 function onStartBtnClick(event) {
-  console.log(event);
-  getRandomHexColor();
+  if (!disabled) {
+    return;
+  }
+
+  disabled = false;
+
+  timerId = setInterval(() => {
+    console.log('натиснули старт');
+    refs.bodyStyle.style.backgroundColor = getRandomHexColor();
+  }, 1000);
 }
 
-function onStopBtnClick(event) {}
+function onStopBtnClick(event) {
+  console.log('стоп');
+  clearInterval(timerId);
+  disabled = true;
+}
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
