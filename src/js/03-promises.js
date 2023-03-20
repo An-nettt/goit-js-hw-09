@@ -1,24 +1,34 @@
-const form = document.querySelector('.feedback-form');
-
-form.addEventListener('submit', createPromise);
-
+const form = document.querySelector('.form');
 let formData = {};
+let delay = 0;
+let step = 0;
+let amount = 0;
 
 form.addEventListener('input', onInput);
+form.addEventListener('submit', createPromise);
 
 function onInput(event) {
+  event.preventDefault;
   formData[event.target.name] = event.target.value;
+  // console.log(event.target.value);
 
-  let delay = formData.delay;
-  return formData.step;
-  return formData.amount;
+  delay = formData.delay;
+  console.log(delay);
+  step = formData.step;
+  console.log(step);
+  amount = formData.amount;
+  console.log(amount);
 }
 
-function createPromise(position, delay) {
-  const shouldResolve = Math.random() > 0.3;
-  if (shouldResolve) {
-    resolve('Success! Value passed to resolve function');
-  } else {
-    reject('Error! Error passed to reject function');
-  }
+for (let index = 1; (index = amount); index += 1) {
+  // function createPromise(position, delay) {
+  console.log(index);
+  //   const shouldResolve = Math.random() > 0.3;
+  //   console.log(shouldResolve);
+  //   if (shouldResolve) {
+  //     resolve();
+  //   } else {
+  //     reject();
+  //   }
+  // }
 }
