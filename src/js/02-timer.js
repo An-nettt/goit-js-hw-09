@@ -19,25 +19,24 @@ refs.startBtn.addEventListener('click', onStartBtnClick);
 
 refs.startBtn.disabled = true;
 
-const fp = flatpickr(
-  refs.myInput,
-  (options = {
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-      if (selectedDates[0] <= today) {
-        refs.startBtn.disabled = true;
-        Notiflix.Notify.failure('Please choose a date in the future');
-        // window.alert('Please choose a date in the future');
-      } else {
-        refs.startBtn.disabled = false;
-        selectedDate = selectedDates[0];
-      }
-    },
-  })
-);
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0] <= today) {
+      refs.startBtn.disabled = true;
+      Notiflix.Notify.failure('Please choose a date in the future');
+      // window.alert('Please choose a date in the future');
+    } else {
+      refs.startBtn.disabled = false;
+      selectedDate = selectedDates[0];
+    }
+  },
+};
+
+const fp = flatpickr(refs.myInput, options);
 
 function onStartBtnClick(event) {
   timerId = setInterval(() => {
