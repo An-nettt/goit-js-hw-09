@@ -4,7 +4,7 @@ form.addEventListener('submit', createPromise);
 
 let formData = {};
 
-refs.form.addEventListener('input', onInput);
+form.addEventListener('input', onInput);
 
 function onInput(event) {
   formData[event.target.name] = event.target.value;
