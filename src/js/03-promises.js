@@ -5,7 +5,7 @@ let step = 0;
 let amount = 0;
 
 form.addEventListener('input', onInput);
-form.addEventListener('submit', createPromise);
+// form.addEventListener('submit', createPromise);
 
 function onInput(event) {
   event.preventDefault;
