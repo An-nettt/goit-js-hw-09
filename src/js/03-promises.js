@@ -53,6 +53,5 @@ const createPromise = (position, nextDelay) => {
         reject({ position, nextDelay });
       }
     }, nextDelay);
-    // console.log(nextDelay);
   });
 };
