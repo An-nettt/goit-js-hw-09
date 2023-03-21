@@ -25,21 +25,17 @@ function onSubmitClick(event) {
   for (let index = 1; index <= amount; index += 1) {
     const position = index;
 
-    console.log(nextDelay);
-
     createPromise(position, nextDelay)
       .then(({ position, nextDelay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${nextDelay}ms`
         );
-        console.log(nextDelay);
         // console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, nextDelay }) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${nextDelay}ms`
         );
-        console.log(nextDelay);
         // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
 
