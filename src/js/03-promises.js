@@ -20,14 +20,14 @@ function onInputClick(event) {
 
 function onSubmitClick(event) {
   event.preventDefault();
-  let nextDelay = delay - step;
+  let nextDelay = delay;
 
   for (let index = 1; index <= amount; index += 1) {
     const position = index;
 
     console.log(nextDelay);
 
-    createPromise(2, 1500)
+    createPromise(position, nextDelay)
       .then(({ position, nextDelay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${nextDelay}ms`
@@ -52,9 +52,9 @@ const createPromise = (position, nextDelay) => {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(position, nextDelay);
+        resolve({ position, nextDelay });
       } else {
-        reject(position, nextDelay);
+        reject({ position, nextDelay });
       }
     }, nextDelay);
     // console.log(nextDelay);
