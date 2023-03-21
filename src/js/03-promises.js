@@ -24,19 +24,18 @@ function onSubmitClick(event) {
 
   for (let index = 1; index <= amount; index += 1) {
     const position = index;
-    nextDelay += step;
 
-    // console.log(nextDelay);
+    console.log(nextDelay);
 
     createPromise(position, nextDelay)
-      .then(() => {
+      .then((position, nextDelay) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${nextDelay}ms`
         );
         console.log(nextDelay);
         // console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
-      .catch(() => {
+      .catch((position, nextDelay) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${nextDelay}ms`
         );
@@ -44,7 +43,7 @@ function onSubmitClick(event) {
         // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
 
-    console.log(nextDelay);
+    nextDelay += step;
   }
 }
 
@@ -53,9 +52,9 @@ const createPromise = (position, nextDelay) => {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
       if (shouldResolve) {
-        resolve();
+        resolve(position, nextDelay);
       } else {
-        reject();
+        reject(position, nextDelay);
       }
     }, nextDelay);
     // console.log(nextDelay);
