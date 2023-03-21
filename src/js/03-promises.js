@@ -27,7 +27,7 @@ function onSubmitClick(event) {
 
     console.log(nextDelay);
 
-    createPromise(position, nextDelay)
+    createPromise(2, 1500)
       .then(() => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${nextDelay}ms`
