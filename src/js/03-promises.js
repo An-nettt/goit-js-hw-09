@@ -28,14 +28,14 @@ function onSubmitClick(event) {
     console.log(nextDelay);
 
     createPromise(2, 1500)
-      .then(() => {
+      .then(({ position, nextDelay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${nextDelay}ms`
         );
         console.log(nextDelay);
         // console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
-      .catch(() => {
+      .catch(({ position, nextDelay }) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${nextDelay}ms`
         );
