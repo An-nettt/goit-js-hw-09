@@ -31,7 +31,7 @@ function createPromise(position, nextDelay) {
 
 function onSubmitClick(event) {
   event.preventDefault();
-  let nextDelay = delay;
+  let nextDelay = delay - step;
 
   for (let index = 1; index <= amount; index += 1) {
     const position = index;
@@ -54,5 +54,3 @@ function onSubmitClick(event) {
       });
   }
 }
-
-console.log(54);
