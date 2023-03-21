@@ -24,7 +24,7 @@ function onSubmitClick(event) {
 
   for (let index = 1; index <= amount; index += 1) {
     const position = index;
-    nextDelay;
+    nextDelay += step;
 
     // console.log(nextDelay);
 
@@ -43,7 +43,6 @@ function onSubmitClick(event) {
         console.log(nextDelay);
         // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    nextDelay += step;
 
     console.log(nextDelay);
   }
